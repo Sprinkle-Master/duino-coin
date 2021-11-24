@@ -203,8 +203,7 @@ void RestartESP(String msg) {
 
 // Our new WDT to help prevent freezes
 // code concept taken from https://sigmdel.ca/michel/program/esp8266/arduino/watchdogs2_en.html
-void ICACHE_RAM_ATTR lwdtcb(void)
-{
+void IRAM_ATTR lwdtcb(void) {
   if ((millis() - lwdCurrentMillis > LWD_TIMEOUT) || (lwdTimeOutMillis - lwdCurrentMillis != LWD_TIMEOUT))
     RestartESP("Loop WDT Failed!");
 }
